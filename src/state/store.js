@@ -1,13 +1,8 @@
-import { combineReducers,configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+  FLUSH, PAUSE,
+  PERSIST, persistReducer, persistStore, PURGE,
+  REGISTER, REHYDRATE
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import counterReducer from "../features/counter/counterSlice";
@@ -27,17 +22,17 @@ if (process.env.NODE_ENV === "development") {
 const persistedReducer = persistReducer(persistConfig);
 const rootReducer = combineReducers({
   counter: counterReducer,
-  signUp:signUpReducer,
-  loginDetails: loginReducer
+  signUp: signUpReducer,
+  userDetails: loginReducer
 });
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }).concat(...middlewares),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(...middlewares),
 });
 export const persistor = persistStore(store);

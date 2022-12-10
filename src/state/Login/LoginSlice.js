@@ -5,7 +5,7 @@ export const createLogin = createAsyncThunk(
   "/login",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await publicPost("/user/login",data);
+      const response = await publicPost("/user/login", data);
       return response;
     } catch (err) {
       return rejectWithValue(err.response);
@@ -19,7 +19,8 @@ export const loginSlice = createSlice({
     isLoading: false,
     success: false,
     error: false,
-    errorMessage:"",
+    errorMessage: "",
+    user: {}
   },
 
   extraReducers: (builder) => {
@@ -30,6 +31,8 @@ export const loginSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.token = action.payload.accessToken;
+      state.user = action.payload.user;
+      state.errorMessage = ""
       state.success = true;
     });
     builder.addCase(createLogin.rejected, (state, action) => {
