@@ -4,7 +4,6 @@ import './App.css';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import SignUp from './components/Signup/Signup';
-import { Counter } from './features/counter/Counter';
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <BrowserRouter>
         <Home />
         <Routes>
-          <Route path="/counter" element={<Counter />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
