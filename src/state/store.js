@@ -5,7 +5,6 @@ import {
   REGISTER, REHYDRATE
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import counterReducer from "../features/counter/counterSlice";
 import { loginReducer } from "./Login";
 import { signUpReducer } from "./SignUp";
 
@@ -21,7 +20,6 @@ if (process.env.NODE_ENV === "development") {
 }
 const persistedReducer = persistReducer(persistConfig);
 const rootReducer = combineReducers({
-  counter: counterReducer,
   signUp: signUpReducer,
   userDetails: loginReducer
 });
