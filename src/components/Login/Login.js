@@ -32,7 +32,7 @@ const Login = () => {
       toast.error(errorMessage);
     }
     if (success) {
-      navigate('/login')
+      navigate('/')
     }
   }, [error, errorMessage, isLoading, success, navigate]);
   const handleSubmit = (event) => {
