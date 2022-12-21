@@ -32,7 +32,7 @@ export const loginSlice = createSlice({
       state.error = null;
       state.token = action.payload.accessToken;
       state.user = action.payload.user;
-      state.errorMessage = ""
+      state.errorMessage = "";
       state.success = true;
     });
     builder.addCase(createLogin.rejected, (state, action) => {
