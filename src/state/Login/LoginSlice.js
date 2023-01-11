@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { publicPost } from "../../utilities/apiCaller";
 
 export const createLogin = createAsyncThunk(
-  "/login",
+  "login/authenticate",
   async (data, { rejectWithValue }) => {
     try {
       const response = await publicPost("/user/login", data);
@@ -12,17 +12,25 @@ export const createLogin = createAsyncThunk(
     }
   }
 );
-
 export const loginSlice = createSlice({
-  name: "login",
+  name: "auth",
   initialState: {
     isLoading: false,
     success: false,
     error: false,
     errorMessage: "",
-    user: {}
+    user: {},
+    token: null
   },
-
+  reducers: {
+    logout: (state) => {
+      state.token = null;
+      state.isLoading = false;
+      state.success = false;
+      state.error = false;
+      state.user = {};
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(createLogin.pending, (state) => {
       state.isLoading = true;
@@ -43,4 +51,5 @@ export const loginSlice = createSlice({
   },
 });
 
+export const { logout } = loginSlice.actions
 export default loginSlice.reducer;
