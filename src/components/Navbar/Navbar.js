@@ -1,10 +1,12 @@
 import React from "react";
 import { FaShoppingCart, FaSignInAlt, FaUserPlus } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logout } from "../../state/Login/LoginSlice";
 
 const Navbar = () => {
     const { token } = useSelector(state => state.userDetails);
+    const dispatch = useDispatch();
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
@@ -48,9 +50,9 @@ const Navbar = () => {
                         </ul>
                         <div className="buttons">
                             {token ? (
-                                <NavLink to="/logout" className="btn btn-outline-dark">
+                                <button onClick={() => dispatch(logout())} className="btn btn-outline-dark">
                                     <FaSignInAlt className="me-1" /> Logout
-                                </NavLink>
+                                </button>
                             ) : (
                                 <NavLink to="/login" className="btn btn-outline-dark ms-2">
                                     <FaUserPlus className="me-1" /> Login
