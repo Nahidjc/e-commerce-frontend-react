@@ -1,11 +1,11 @@
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { api } from '../../configs';
 const Payment = () => {
 
     const [name, setName] = useState("Nahid");
     const [credit, setCredit] = useState(1000);
-    // const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,10 +24,9 @@ const Payment = () => {
             },
             data
         };
-        axios.get('http://localhost:8000/payment/init', config)
+        axios.get(`${api}/payment/init`, config)
             .then(response => {
                 window.location.href = response.data.GatewayPageURL;
-                // redirect(response.data.GatewayPageURL);
             })
             .catch(error => {
                 console.error(error);
@@ -68,7 +67,6 @@ const Payment = () => {
                         >
                             Checkout
                         </Button>
-                        {/* <button onClick={handleSubmit}>Checkout</button> */}
                     </div>
 
                 </form>
