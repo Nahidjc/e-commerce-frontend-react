@@ -12,7 +12,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
                 <div className="container">
                     <NavLink className="navbar-brand fw-bold fs-4" to="/">
-                        Tcash
+                        TAYBA COLLECTION
                     </NavLink>
                     <button
                         className="navbar-toggler"
@@ -43,8 +43,8 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/deposit">
-                                    Deposit
+                                <NavLink className="nav-link" to="/contact">
+                                    Contact
                                 </NavLink>
                             </li>
                         </ul>
