@@ -4,7 +4,7 @@ import RingLoader from "react-spinners/RingLoader";
 
 export default function Loader() {
   return (
-    <Box style={{display: 'flex', justifyContent: 'center',alignItems:'center',height: "100vh", width: "100vw" }}>
+    <Box style={{display: 'flex', justifyContent: 'center',alignItems:'center',height: "80vh", width: "100vw" }}>
      <RingLoader 
      loading={true}
      
