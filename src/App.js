@@ -16,7 +16,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/deposit" element={<Payment />} />
-          <Route path="/payment/successful" element={<SuccessPayment />} />
+          <Route path="/payment/successful/:tranId" element={<SuccessPayment />} />
         </Routes>
       </BrowserRouter>
 
